@@ -6,7 +6,7 @@ type Hello struct {
 }
 
 // Message calculates the message
-func (model *Hello) Message() map[string]string {
+func (model *Hello) Message() string {
 	var message string
 	if model.Name != "" {
 		message = "Hello there " + model.Name + "!"
@@ -14,7 +14,5 @@ func (model *Hello) Message() map[string]string {
 		message = "Hello there!"
 	}
 
-	return map[string]string{
-		"Message": message,
-	}
+	return message
 }

@@ -1,0 +1,5 @@
+.vscode
+vendor
+.env
+go-http-scaffold
+*.log

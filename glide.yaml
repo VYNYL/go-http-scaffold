@@ -1,0 +1,6 @@
+package: github.com/VYNYL/mailer
+import:
+- package: github.com/gorilla/mux
+  version: ^1.2.0
+- package: github.com/joho/godotenv
+  version: ^1.0.0

@@ -1,0 +1,8 @@
+hash: b2ed1d2d24a6fe4c5726f1e725bdfe52b6c451d587395231c129ce755732258c
+updated: 2017-01-17T11:54:03.902583616-07:00
+imports:
+- name: github.com/gorilla/mux
+  version: b12896167c61cb7a17ee5f15c2ba0729d78793db
+- name: github.com/joho/godotenv
+  version: a01a834e1654b4c9ca5b3ad05159445cc9c7ad08
+testImports: []

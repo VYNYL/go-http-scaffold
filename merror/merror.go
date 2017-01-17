@@ -9,11 +9,11 @@ import (
 	"path/filepath"
 )
 
-type IMailerError interface {
+type IScaffoldError interface {
 	Parse() (int, string)
 }
 
-type MailerSimpleError struct {
+type ScaffoldSimpleError struct {
 	Code    int
 	Message interface{}
 	Log     string        `json:"-"`
@@ -45,7 +45,7 @@ func Log(lines ...string) error {
 }
 
 // Parse will json.Marshal an error and, if it has a Log value, prints it to the error log
-func (simple *MailerSimpleError) Parse() (int, string) {
+func (simple *ScaffoldSimpleError) Parse() (int, string) {
 	if simple.Log != "" {
 		Log(fmt.Sprintf("%s\n", simple.Log),
 			fmt.Sprintf("Dump %+v\n\n", simple.Req))
@@ -60,16 +60,15 @@ func (simple *MailerSimpleError) Parse() (int, string) {
 }
 
 // Respond with a marshalled error
-func Respond(w http.ResponseWriter, err IMailerError) {
+func Respond(w http.ResponseWriter, err IScaffoldError) {
 	code, msg := err.Parse()
 	w.WriteHeader(code)
 	fmt.Fprintln(w, msg)
 }
 
-
 // Handle a server 500 error by reporting a problem to the logger
 func ServerError(w http.ResponseWriter, rq *http.Request, err error) {
-	Respond(w, &MailerSimpleError{
+	Respond(w, &ScaffoldSimpleError{
 		Code: http.StatusInternalServerError,
 		Log:  err.Error(),
 		Req:  rq,

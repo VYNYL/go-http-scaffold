@@ -3,7 +3,7 @@ package router
 import (
 	"net/http"
 
-	"github.com/VYNYL/mailer/prehandle"
+	"github.com/VYNYL/go-http-scaffold/prehandle"
 	"github.com/gorilla/mux"
 )
 

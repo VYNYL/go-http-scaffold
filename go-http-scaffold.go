@@ -6,9 +6,9 @@ import (
 
 	"os"
 
-	"github.com/VYNYL/mailer/prehandle"
-	"github.com/VYNYL/mailer/router"
-	"github.com/VYNYL/mailer/routes"
+	"github.com/VYNYL/go-http-scaffold/prehandle"
+	"github.com/VYNYL/go-http-scaffold/router"
+	"github.com/VYNYL/go-http-scaffold/routes"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 )
@@ -28,7 +28,8 @@ func main() {
 
 	r := mux.NewRouter()
 
-	doRoute(r, routes.PostSend)
+	doRoute(r, routes.GetHello)
+	doRoute(r, routes.GetHelloByName)
 
 	http.ListenAndServe(":"+port, r)
 }

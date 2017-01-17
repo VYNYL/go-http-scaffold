@@ -1,4 +1,4 @@
-package: github.com/VYNYL/mailer
+package: github.com/VYNYL/go-http-scaffold
 import:
 - package: github.com/gorilla/mux
   version: ^1.2.0

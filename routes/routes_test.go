@@ -3,6 +3,7 @@ package routes
 import (
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 )
 
@@ -19,15 +20,15 @@ func TestGetHello(t *testing.T) {
 
 	GetHello.Test(w, r)
 
-	if w.Code != http.StatusAccepted {
-		t.Fatalf("%d status code when %d expected", w.Code, http.StatusAccepted)
+	if w.Code != http.StatusOK {
+		t.Fatalf("%d status code when %d expected", w.Code, http.StatusOK)
 	}
 }
 
 // TestGetHelloByName tests the route GetHelloByName
 func TestGetHelloByName(t *testing.T) {
 	w := httptest.NewRecorder()
-	r, err := http.NewRequest(GetHello.Method, GetHello.Path, nil)
+	r, err := http.NewRequest(GetHello.Method, strings.Replace(GetHelloByName.Path, "{name}", "VYNYL", 1), nil)
 
 	if err != nil {
 		t.Fatal(err)
@@ -35,7 +36,7 @@ func TestGetHelloByName(t *testing.T) {
 
 	GetHelloByName.Test(w, r)
 
-	if w.Code != http.StatusAccepted {
-		t.Fatalf("%d status code when %d expected", w.Code, http.StatusAccepted)
+	if w.Code != http.StatusOK {
+		t.Fatalf("%d status code when %d expected", w.Code, http.StatusOK)
 	}
 }

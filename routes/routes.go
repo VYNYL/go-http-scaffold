@@ -30,7 +30,7 @@ func handleGetHello(w http.ResponseWriter, rq *http.Request) {
 }
 
 // GetHelloByName router.Route
-// Path: "/hello",
+// Path: "/hello/{name}",
 // Method: "GET"
 var GetHelloByName = &router.Route{
 	Path:       "/hello/{name}",

@@ -5,7 +5,7 @@ type Hello struct {
 	Name string
 }
 
-// Message calculates the  message
+// Message calculates the message
 func (model *Hello) Message() map[string]string {
 	var message string
 	if model.Name != "" {

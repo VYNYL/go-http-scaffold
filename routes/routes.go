@@ -5,6 +5,9 @@ import (
 
 	"encoding/json"
 
+	"strings"
+
+	"github.com/VYNYL/go-http-scaffold/merror"
 	"github.com/VYNYL/go-http-scaffold/mmodels"
 	"github.com/VYNYL/go-http-scaffold/prehandle"
 	"github.com/VYNYL/go-http-scaffold/router"
@@ -42,6 +45,15 @@ var GetHelloByName = &router.Route{
 func handleGetHelloByName(w http.ResponseWriter, rq *http.Request) {
 
 	vars := mux.Vars(rq)
+
+	if strings.ContainsAny(vars["name"], "0123456789") {
+		merror.Respond(w, &merror.ScaffoldSimpleError{
+			Code:    http.StatusBadRequest,
+			Message: "Names don't have numbers!",
+			Req:     rq,
+		})
+		return
+	}
 
 	model := &mmodels.Hello{
 		Name: vars["name"],

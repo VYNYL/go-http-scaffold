@@ -12,4 +12,4 @@
 
 ## Testing
 
-* `$ go test .`
+* `$ go test ./...`
